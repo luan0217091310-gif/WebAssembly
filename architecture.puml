@@ -1,0 +1,32 @@
+@startuml
+!theme plain
+skinparam componentStyle uml2
+
+package "Frontend (Browser Client)" {
+    [HTML/CSS UI (Modern Glassmorphism)] as UI
+    [JavaScript Controller (app.js)] as JSController
+    [WebAssembly Module (Wasm)] as WASM
+    [Pure JS Implementation] as JSImpl
+    [Canvas API] as Canvas
+}
+
+package "Backend (PHP MVC Architecture)" {
+    [Public Entry Point (index.php)] as Router
+    [LogController] as Controller
+    [LogModel] as Model
+}
+
+database "MySQL Database" {
+    [performance_logs Table] as DB
+}
+
+UI <--> JSController : User Interactions & UI Updates
+JSController --> Canvas : Get/Put Image Data
+JSController --> WASM : Offload ArrayBuffer (via memory)
+JSController --> JSImpl : Process Array directly
+JSController --> Router : Fetch API (POST/GET logs)
+
+Router --> Controller : Routes request
+Controller --> Model : Calls data operations
+Model --> DB : PDO SQL Queries
+@enduml
