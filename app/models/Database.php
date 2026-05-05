@@ -2,8 +2,8 @@
 class Database {
     private $host = "localhost";
     private $db_name = "wasm_demo";
-    private $username = "root";
-    private $password = "";
+    private $username = "postgres";
+    private $password = "123";
     public $conn;
 
     public function getConnection() {
