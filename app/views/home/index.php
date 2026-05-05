@@ -11,19 +11,26 @@
     <div class="app-container">
         <header class="glass-header">
             <div class="header-top">
-                <h1>High Performance WebAssembly</h1>
-                <button id="theme-toggle" class="theme-btn">🌙 Dark Mode</button>
+                <div>
+                    <h1>High Performance WebAssembly</h1>
+                    <p>Bridging C++ with JavaScript for heavy computation offloading.</p>
+                </div>
+                <div class="header-actions">
+                    <span id="wasm-status" class="status-pill status-loading">Loading WASM</span>
+                    <span id="image-status" class="status-pill status-idle">No image</span>
+                    <button id="theme-toggle" class="theme-btn" type="button">Dark Mode</button>
+                </div>
             </div>
-            <p>Bridging C++ with JavaScript for heavy computation offloading.</p>
         </header>
 
         <main class="main-content">
             <section class="controls-section glass-panel">
-                <div class="control-group">
+                <div class="control-group upload-group">
                     <label for="image-upload" class="upload-btn">
-                        Upload Image
+                        Browse Image
                         <input type="file" id="image-upload" accept="image/*">
                     </label>
+                    <p class="control-hint">Use a larger image for clearer timing differences.</p>
                 </div>
                 <div class="control-group">
                     <label for="filter-select">Filter:</label>
@@ -33,33 +40,50 @@
                     </select>
                 </div>
                 <div class="control-group actions">
-                    <button id="btn-js" class="action-btn js-btn">Run Pure JS</button>
-                    <button id="btn-wasm" class="action-btn wasm-btn">Run WebAssembly</button>
+                    <button id="btn-js" class="action-btn js-btn" type="button" disabled>Run Pure JS</button>
+                    <button id="btn-wasm" class="action-btn wasm-btn" type="button" disabled>Run WebAssembly</button>
                 </div>
             </section>
 
             <section class="results-section">
                 <div class="image-box glass-panel">
                     <h3>Original</h3>
-                    <canvas id="canvas-original"></canvas>
+                    <div class="canvas-wrap">
+                        <canvas id="canvas-original" width="640" height="360"></canvas>
+                        <div id="original-placeholder" class="canvas-placeholder">
+                            <strong>No image loaded</strong>
+                            <span>Choose an image to preview it here.</span>
+                        </div>
+                    </div>
                 </div>
                 <div class="image-box glass-panel">
                     <h3>Result <span id="method-badge" class="badge"></span></h3>
-                    <canvas id="canvas-result"></canvas>
+                    <div class="canvas-wrap">
+                        <canvas id="canvas-result" width="640" height="360"></canvas>
+                        <div id="result-placeholder" class="canvas-placeholder">
+                            <strong>Waiting for benchmark</strong>
+                            <span>Run JS or WASM after uploading an image.</span>
+                        </div>
+                    </div>
                     <div class="performance-stats">
                         <p>Execution Time: <strong id="exec-time">0 ms</strong></p>
                     </div>
+                    <p id="run-status" class="panel-note">Upload an image to start benchmarking.</p>
                 </div>
             </section>
         </main>
         
         <aside class="logs-panel glass-panel">
-            <h2>Recent Performance Logs (Database)</h2>
+            <div class="logs-header">
+                <h2>Recent Performance Logs</h2>
+                <span id="logs-status" class="status-pill status-loading">Loading</span>
+            </div>
             <ul id="performance-logs-list">
-                <li>Loading logs...</li>
+                <li class="log-empty">Loading logs...</li>
             </ul>
         </aside>
     </div>
+    <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
     
     <script src="js/app.js"></script>
 </body>
