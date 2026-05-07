@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Wasm vs JS Image Processing</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="<?php echo BASE_URL; ?>css/style.css">
+    <script>
+        const BASE_URL = '<?php echo BASE_URL; ?>';
+    </script>
 </head>
 <body>
     <div class="app-container">
@@ -142,6 +145,6 @@
     </div>
     <div id="toast-region" class="toast-region" aria-live="polite" aria-atomic="true"></div>
     
-    <script src="js/app.js"></script>
+    <script src="<?php echo BASE_URL; ?>js/app.js"></script>
 </body>
 </html>

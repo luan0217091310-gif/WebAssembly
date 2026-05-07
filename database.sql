@@ -1,6 +1,7 @@
-CREATE DATABASE IF NOT EXISTS wasm_demo;
-USE wasm_demo;
+CREATE DATABASE IF NOT EXISTS webassembly;
+USE webassembly;
 
+DROP TABLE IF EXISTS performance_logs;
 CREATE TABLE IF NOT EXISTS performance_logs (
     id INT AUTO_INCREMENT PRIMARY KEY,
     method VARCHAR(50) NOT NULL,

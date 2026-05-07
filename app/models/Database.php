@@ -1,9 +1,9 @@
 <?php
 class Database {
     private $host = "localhost";
-    private $db_name = "wasm_demo";
-    private $username = "postgres";
-    private $password = "123";
+    private $db_name = "webassembly";
+    private $username = "root";
+    private $password = "";
     public $conn;
 
     public function getConnection() {

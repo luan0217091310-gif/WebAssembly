@@ -58,7 +58,7 @@ The architecture relies on a **Client-heavy processing model with Server-side tr
    - The default configuration uses `localhost`, root user, and no password. Update these if your environment differs:
      ```php
      private $host = "localhost";
-     private $db_name = "wasm_demo";
+     private $db_name = "webassembly";
      private $username = "root";   // Update me
      private $password = "";       // Update me
      ```

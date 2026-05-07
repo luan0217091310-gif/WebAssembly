@@ -527,7 +527,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const payload = toLogPayload(result);
 
         try {
-            const response = await fetch('index.php?url=log/log', {
+            const response = await fetch(BASE_URL + 'index.php?url=log/log', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(payload)
@@ -557,7 +557,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         renderLogState('Loading logs...');
 
         try {
-            const response = await fetch('index.php?url=log/get');
+            const response = await fetch(BASE_URL + 'index.php?url=log/get');
             if (!response.ok) {
                 throw new Error(`Log request failed with ${response.status}`);
             }
@@ -595,7 +595,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         clearLocalLogs();
 
         try {
-            const response = await fetch('index.php?url=log/clear', { method: 'POST' });
+            const response = await fetch(BASE_URL + 'index.php?url=log/clear', { method: 'POST' });
             if (!response.ok) {
                 throw new Error(`Clear request failed with ${response.status}`);
             }
@@ -678,7 +678,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     setWasmStatus('loading', 'Loading WASM');
 
     try {
-        const response = await fetch('wasm/image_processing.wasm');
+        const response = await fetch(BASE_URL + 'wasm/image_processing.wasm');
         if (!response.ok) {
             throw new Error(`WASM request failed with ${response.status}`);
         }
