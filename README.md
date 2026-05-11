@@ -80,3 +80,11 @@ The architecture relies on a **Client-heavy processing model with Server-side tr
 ## WebAssembly Compilation Note
 
 The `image_processing.wasm` file is pre-compiled. In a standard C++ pipeline, this is done using Emscripten (`emcc`). The equivalent C++ logic and WebAssembly Text (`.wat`) are provided in `public/wasm/` for academic demonstration purposes.
+
+## Environment Variables Template
+
+This project does not require a standalone `.env` template. All environment-specific database credentials (local vs production) are auto-detected and managed seamlessly within `app/models/Database.php`.
+
+## Testing Credentials
+
+No admin credentials or user authentication are required. The entire WebAssembly benchmarking suite and logging API are publicly accessible for testing.
